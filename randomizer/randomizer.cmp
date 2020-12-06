@@ -1,0 +1,40 @@
+<aura:component implements = "flexipage:availableForAllPageTypes">
+    <aura:attribute name = "result" type = "String" default = "Here will be random number"/>
+    <aura:attribute name = "isButtonActive" type = "Boolean" default = "true"/>
+    
+    <lightning:card variant="Narrow" title="Randomizer">
+        <p class="slds-p-horizontal_small">
+            <lightning:layout>
+                <lightning:layoutItem padding="around-small" size="10">
+                    <div>
+                        <fieldset class="slds-box slds-theme_default slds-container_small">
+                            <form class="slds-form_stacked">
+                                <lightning:input type = "number"
+                                                 aura:id = "numberOneField"
+                                                 label = "First number"
+                                                 name = "First number"
+                                                 required = "true"  
+                                                 onchange = "{!c.activeButton}"/>
+                                <lightning:input type = "number"
+                                                 aura:id = "numberTwoField" 
+                                                 label = "Second number"
+                                                 name = "Second number"
+                                                 onchange = "{!c.activeButton}"
+                                                 required = "true"/>
+                                <lightning:input type="number" 
+                                                 name="resultField" 
+                                                 label="Result" 
+                                                 readonly="true" 
+                                                 value="{!v.result}"/>
+                                <lightning:button label = "Count"
+                                                  variant="brand-outline"
+                                                  onclick = "{!c.handleCount}"
+                                                  disabled = "{!v.isButtonActive}"/>     
+                            </form>
+                        </fieldset>
+                    </div>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </p>
+    </lightning:card>  
+</aura:component>
